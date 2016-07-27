@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>3D图片环 - by 智能社 - www.zhinengshe.com</title>
+<link href="style/index.css" type="text/css" rel="stylesheet" />
+<script src="js/index.js"></script>
+</head>
+
+<body>
+<div id="div1">
+	<strong id="div2"></strong>
+</div>
+<style>
+body {
+	_background-image: url(image/bg.jpg);
+	_background-attachment: fixed;
+} 
+.Com{
+	width:100%;
+	clear:both;
+	overflow:hidden;
+	position:fixed;
+	bottom:20px;
+	text-align:center;
+	color:#FFF;
+	font-family:Verdana;
+	_position: absolute;  
+	_top: expression(document.documentElement.clientHeight - document.getElementById('Com').offsetHeight - 20 + "px");
+	z-index:99999;
+}
+.Com a{
+	color:#FFF;
+	text-decoration:none;
+}
+</style>
+</body>
+</html>

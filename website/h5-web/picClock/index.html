@@ -1,0 +1,73 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>超酷数码钟表</title>
+<link href="style/index.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.7.2.js"></script>
+<script>
+$(document).ready(function(){
+	function toDou(n){
+		return n<10?'0'+n:''+n;	
+	}
+	function time(){
+		var oDate = new Date();
+		var y = oDate.getFullYear();
+		var m = oDate.getMonth()+1;
+		var d = oDate.getDate();
+		var w = oDate.getDay();
+		var H = oDate.getHours();
+		var M = oDate.getMinutes();
+		var S = oDate.getSeconds();
+		var week = ['seven','one','two','three','four','five','six'];
+		var set = toDou(y)+toDou(m)+toDou(d)+toDou(H)+toDou(M)+toDou(S);
+		var n = 0;
+		$("#clock img[class='num']").each(function(index, element) {
+           $("#clock img[class='num']").eq(index).attr('src','images/'+set.charAt(n)+'.png');
+			n++; 
+        });
+		$("#clock img[class='num2']").attr('src','images/'+week[w]+'.png');
+	}
+	time();
+	var timer = null;
+	clearInterval(timer);
+	timer = setInterval(function(){
+		time();	
+	},1000)
+});
+</script>
+</head>
+
+<body>
+
+<div id="clock" class="date">
+    <h2><img src="images/title.png" /></h2>
+    <div class="year" id="year">
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/year.png" alt="year" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/month.png" alt="month" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/seven.png" alt="seven" />
+    </div>
+    <div class="time" id="time">
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/sign.png" alt="sign" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/sign.png" alt="sign" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="pos2" src="images/week.png" alt="week" />
+        <img class="num2" src="images/one.png" alt="one" id="num2"/>
+    </div>
+</div>
+
+</body>
+</html>

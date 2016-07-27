@@ -1,0 +1,13 @@
+body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,a,i,b,em,strong,span,img,input,select{ padding:0 ; margin: 0; }
+a{ text-decoration: none; }
+li{ list-style: none; }	
+.fl{ float: left; display:inline; }
+.fr{ float: right; display:inline; }
+.clearFix:after{ content: ''; display: block; clear: both; }
+.clearFix{ zoom: 1; }
+.wrapper{ width:960px; margin: 0 auto; }
+body{font-size: 12px; color: #252525; }
+* a{color: #000; }
+a:hover{color: red; text-decoration: underline; } 
+.b{font-weight: bold; }
+.bg_none{background: none; }

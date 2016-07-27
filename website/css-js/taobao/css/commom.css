@@ -1,0 +1,12 @@
+body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,a,i,b,em,strong,span,img,input,select{ padding:0 ; margin: 0; }
+a{ text-decoration: none; }
+li{ list-style: none; }	
+.fl{ float: left; display:inline; }
+.fr{ float: right; display:inline; }
+.clearFix:after{ content: ''; display: block; clear: both; }
+.clearFix{ zoom: 1; }
+.wrapper{ width:1190px; margin: 0 auto; font-size: 12px;}
+a{ color: #6c6c6c; }
+.rc{ color: #f22e00; }
+.m_23{ margin-right: 23px; margin-left: 5px; }
+a:hover{color: #ff5400; }

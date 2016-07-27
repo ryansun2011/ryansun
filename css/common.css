@@ -1,0 +1,37 @@
+body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dd,a,i,b,em,strong,span,img,input,select{ padding:0 ; margin: 0; }
+html{ font-size: 20px; }
+a{ text-decoration: none; }
+li{ list-style: none; }	
+.fl{ float: left; display:inline; }
+.fr{ float: right; display:inline; }
+.clearFix:after{ content: ''; display: block; clear: both; }
+.clearFix{ zoom: 1; }
+body{ font-family:"microsoft yahei"; }
+@font-face {font-family: 'font-nav';
+    src: url('../font/font-nav/iconfont.eot'); /* IE9*/
+    src: url('../font/font-nav/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/font-nav/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/font-nav/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/font-nav/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+ }
+.font-nav{
+    font-family:"font-nav" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+@font-face {font-family: 'font-contact';
+    src: url('../font/font-contact/iconfont.eot'); /* IE9*/
+    src: url('../font/font-contact/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/font-contact/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/font-contact/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/font-contact/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+ }
+.font-contact{
+    font-family:"font-contact" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>iPhone手机图片查看器</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script src="move.js"></script>
+<script>
+	window.onload = function(){
+		var oWrap = document.getElementById('wrap');
+		var oUl = oWrap.children[0];
+		var aLi = oUl.children;
+		var iNow = 0;
+		oUl.onmousedown = function(ev){
+			clearInterval(oUl.timer);
+			var oEvent = ev||event;
+			var disX = oEvent.clientX - oUl.offsetLeft;
+			var downX = oEvent.clientX;
+			document.onmousemove = function(ev){
+				var oEvent = ev||event;
+				oUl.style.left = oEvent.clientX - disX + 'px';	
+			};
+			document.onmouseup = function(ev){
+				var oEvent = ev||event;
+				var dis = Math.abs(oEvent.clientX - downX);
+				if(dis>20){
+					if(oEvent.clientX>downX){
+						iNow--;
+						if(iNow<0){
+							iNow=0;
+						}
+					}else if(oEvent.clientX<downX){
+						iNow++;
+						if(iNow == aLi.length){
+							iNow = aLi.length-1;
+						}	
+					}
+				}
+				startMove(oUl,{left:-iNow*aLi[0].offsetWidth});
+				document.onmousemove = null;
+				document.onmouseup = null;
+				oUl.releaseCapture&&oUl.releaseCapture();	
+			}
+			oUl.setCapture&&oUl.setCapture();
+			return false;
+		};	
+	};
+</script>
+
+</head>
+
+<body>
+
+<div id="iphone">
+	<div id="wrap">
+		<ul>
+			<li style="background:url(images/pic1.png);></li>
+			<li style="background:url(images/pic2.png);></li>
+			<li style="background:url(images/pic3.png);></li>
+			<li style="background:url(images/pic4.png);></li>
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

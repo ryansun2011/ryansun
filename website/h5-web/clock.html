@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>时间</title>
+<style>
+*{ padding:0; margin:0; font-style:normal; }
+.clock{ width:300px; height:300px; border-radius:50%; border:4px solid #000; position:absolute; left:50%; top:50%; margin-left:-150px; margin-top:-150px; }
+.clock div{ position:absolute; left:50%; border-radius:100% 100% 0 0; -webkit-transform-origin:center bottom; }
+.clock .center{ width:12px; height:12px; background:#000; position:absolute; left:50%; top:50%; margin-left:-6px; margin-top:-6px; border-radius:50%; }
+.clock .hour{ width:8px; height:80px; margin-left:-4px; background:#000; top:70px; }
+.clock .min{ width:6px; height:100px; margin-left:-3px; background:#000; top:50px; }
+.clock .sec{ width:4px; height:120px; margin-left:-2px; background:red; top:30px; }
+.clock .scale{ width:4px; height:6px; position:absolute; left:50%; margin-left:-2px; top:0; background:#000; -webkit-transform-origin:center 150px; border-radius:0 0 100% 100%; }
+.clock .big_scale{ width:6px; height:12px; position:absolute; left:50%; margin-left:-3px; top:0; background:#000; -webkit-transform-origin:center 150px; border-radius:0 0 100% 100%; }
+.clock .big_scale em{ width:30px; font-weight:bold; position:absolute;top:18px; left:50%; margin-left:-15px; text-align:center; }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+	var oClock = document.querySelector('.clock');
+	var oH = document.querySelector('.hour');
+	var oM = document.querySelector('.min');
+	var oS = document.querySelector('.sec');
+	var n = 60;
+	for(var i = 0;i<n;i++){
+		var oSpan = document.createElement('span');
+		if(i%5){
+			oSpan.className='scale';	
+		}else{
+			oSpan.className = 'big_scale';
+			var oNum = document.createElement('em');
+			oNum.innerHTML = i/5;
+			oSpan.appendChild(oNum);
+			oNum.style.WebkitTransform = 'rotate('+-i*6+'deg)';
+		}
+		oSpan.style.WebkitTransform='rotate('+i*6+'deg)';
+		oClock.appendChild(oSpan);
+	}
+	function clock(){
+		var oDate = new Date();
+		var h = oDate.getHours();
+		var m = oDate.getMinutes();
+		var s = oDate.getSeconds();
+		var ms = oDate.getMilliseconds();
+		oH.style.WebkitTransform = 'rotate('+(h*30+m/60*30)+'deg)';	
+		oM.style.WebkitTransform = 'rotate('+(m*6+s/60*6)+'deg)';
+		oS.style.WebkitTransform = 'rotate('+(s*6+ms/1000*6)+'deg)';
+	}
+	clock();
+	setInterval(clock,1);
+},false);
+</script>
+</head>
+
+<body>
+<div class="clock">
+	<div class="hour"></div>
+    <div class="min"></div>
+    <div class="sec"></div>
+    <span class="center"></span>
+</div>
+</body>
+</html>

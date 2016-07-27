@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>3D图片轮播</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script src="doMove.js"></script>
+<script>
+	window.onload = function(){
+		var oBtn1 = document.getElementById('btn1');
+		var oBtn2 = document.getElementById('btn2');
+		var oUl = document.getElementById('znsRotatePic');
+		var aLi = oUl.children;
+		var aImg = document.getElementsByTagName('img');
+		var aA = oUl.getElementsByTagName('a');
+		var aPos = [];
+		aA[0].onclick = function(){
+			fnLeft();
+			return false;	
+		};
+		aA[2].onclick = function(){
+			fnRight();
+			return false;	
+		};
+		for(var i = 0;i<aLi.length;i++){
+			aPos[i] = {left:aLi[i].offsetLeft,top:aLi[i].offsetTop,opacity:getStyle(aImg[i],'opacity'),imgW:aImg[i].width,imgT:parseInt(getStyle(aImg[i],'top')),aEv:aA[i].onclick};		
+		}	
+		oBtn1.onclick = fnRight;
+		function fnRight(){
+			aPos.push(aPos.shift());
+			for(var i = 0;i<aLi.length;i++){
+				move(aLi[i],{left:aPos[i].left,top:aPos[i].top});
+				move(aImg[i],{opacity:aPos[i].opacity,width:aPos[i].imgW,top:aPos[i].imgT});
+				aA[i].onclick = aPos[i].aEv;
+			}	
+		}
+		oBtn2.onclick = fnLeft;
+		function fnLeft(){
+			aPos.unshift(aPos.pop());
+			for(var i = 0;i<aLi.length;i++){
+				move(aLi[i],{left:aPos[i].left,top:aPos[i].top});
+				move(aImg[i],{opacity:aPos[i].opacity,width:aPos[i].imgW,top:aPos[i].imgT});
+				aA[i].onclick = aPos[i].aEv;
+			}	
+		}
+		
+	};
+</script>
+</head>
+
+<body>
+<input type="button" value="往右面走" id="btn1" />
+<input type="button" value="往左面走" id="btn2" />
+<ul id="znsRotatePic">
+	<li class="pic1">
+		<a href="javascript:;"><img src="images/pic1.gif" alt="pic1" class="unactive"  width="187" /></a><!-- 208 -->
+		<span></span>
+	</li>
+	<li class="pic2">
+		<a href="javascript:;"><img src="images/pic2.gif" alt="pic2"  width="208" /></a>
+		<span></span>
+	</li>
+	<li class="pic3">
+		<a href="javascript:;"><img src="images/pic3.gif" alt="pic3" class="unactive"  width="187" /></a>
+		<span></span>
+	</li>
+</ul>
+</body>
+</html>

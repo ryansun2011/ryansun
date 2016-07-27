@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<style>
+*{ padding:0; margin:0; }
+body{ text-align:center; background:#000; }
+canvas{ background:#fff; }
+</style>
+<script>
+function d2a(n){
+	return n*Math.PI/180;
+}
+document.addEventListener('DOMContentLoaded',function(){
+	var oC = document.querySelector('#ci');
+	var gd = oC.getContext('2d');
+	var cx = oC.offsetWidth/2;
+	var cy = oC.offsetHeight/2;
+	var d = 0;
+	var r = 100;
+	var lg = gd.createLinearGradient(100,100,500,500);
+	lg.addColorStop(0,'red');
+	lg.addColorStop(0.5,'green');
+	lg.addColorStop(1,'blue');
+	var timer = setInterval(function(){
+		gd.clearRect(0,0,oC.offsetWidth,oC.offsetHeight);
+		d++;
+		gd.beginPath();
+		gd.lineWidth = '20';
+		gd.strokeStyle = lg;
+		gd.arc(cx,cy,r,d2a(0),d2a(d),false);
+		gd.stroke();
+		
+		if(d>=360){
+			clearInterval(timer);	
+		}
+		
+		gd.beginPath();
+		var str = Math.round(d/360*100) + '%';
+		gd.font = '30px 微软雅黑';
+		gd.textAlign = 'center';
+		gd.textBaseline = 'middle';
+		gd.fillText(str,cx,cy);
+		console.log(d);
+	},30);	
+},false);
+</script>
+</head>
+iNow	+1		%3+1	nb		-3	%3	+3	span    					
+0			1			2		-3	-0	3	3					
+2			3			1		-1	-1	2	2					
+1			2			3		-2	-2	1	1`					
+0			1			2		-3	-0	3	3					
+2			3			1		-1	-1	2	2				
+
+								
+                                
+                                
+                              
+<body>
+<canvas width="800" height="600" id="ci"></canvas>
+</body>
+</html>
